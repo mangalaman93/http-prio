@@ -306,6 +306,15 @@ func (c *Client) Get(url string) (resp *Response, err error) {
 	return c.doFollowingRedirects(req, shouldRedirectGet)
 }
 
+func (c *Client) GetWithPriority(url string, priority int) (resp *Response, err error) {
+	req, err := NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Priority = priority
+	return c.doFollowingRedirects(req, shouldRedirectGet)
+}
+
 func alwaysFalse() bool { return false }
 
 func (c *Client) doFollowingRedirects(ireq *Request, shouldRedirect func(int) bool) (resp *Response, err error) {

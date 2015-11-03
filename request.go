@@ -231,6 +231,9 @@ type Request struct {
 	//
 	// For server requests, this field is not applicable.
 	Cancel <-chan struct{}
+
+	// Priority (QJump)
+	Priority int
 }
 
 // ProtoAtLeast reports whether the HTTP protocol used

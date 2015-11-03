@@ -232,6 +232,12 @@ func (t *Transport) RoundTrip(req *Request) (resp *Response, err error) {
 		return nil, err
 	}
 
+	err = setTCPPriority(pconn.conn, req.Priority)
+	if err != nil {
+		// TODO: handle errors better
+		panic(err)
+	}
+
 	return pconn.roundTrip(treq)
 }
 
