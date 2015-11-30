@@ -1901,6 +1901,14 @@ func (srv *Server) Serve(l net.Listener) error {
 			}
 			return e
 		}
+
+		// // temporary set priorities to all the messages
+		// err := setTCPPriority(rw, 1)
+		// if err != nil {
+		// 	// TODO: handle errors better
+		// 	panic(err)
+		// }
+
 		tempDelay = 0
 		c, err := srv.newConn(rw)
 		if err != nil {

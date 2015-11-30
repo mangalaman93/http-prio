@@ -33,7 +33,7 @@ func setTCPPriority(conn net.Conn, priority int) error {
 
 	// test wireshark: (syscall.IPPROTO_IP, syscall.IP_TOS, 0x28)
 	// if priority != 0 {
-	// 	err = syscall.SetsockoptInt(int(file.Fd()), syscall.IPPROTO_IP, syscall.IP_TOS, 0x28)
+	// 	err = syscall.SetsockoptInt(int(file.Fd()), syscall.IPPROTO_IP, syscall.IP_TOS, 0x32)
 	// }
 	err = syscall.SetsockoptInt(int(file.Fd()), syscall.SOL_SOCKET, syscall.SO_PRIORITY, priority)
 	file.Close()
